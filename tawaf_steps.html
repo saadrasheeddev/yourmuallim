@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js"></script>
+    <link rel="stylesheet" href="assets/css/chatbot.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+
+
+	  <!-- Favicons -->
+	  <link href="assets/img/favicon.png" rel="icon">
+	  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+	
+	  <!-- Google Fonts -->
+	  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Roboto:300,300i,400,400i,500,500i,700,700i&display=swap" rel="stylesheet">
+	
+	  <!-- Vendor CSS Files -->
+	  <link href="assets/vendor/animate.css/animate.min.css" rel="stylesheet">
+	  <link href="assets/vendor/aos/aos.css" rel="stylesheet">
+	  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+	  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+	  <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+	  <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+	  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+	  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	
+
+	<title>Umrah Application</title>
+	<style>
+		body {
+			font-family: Arial, sans-serif;
+			margin: 0;
+			padding: 0;
+		}
+
+		.container {
+			max-width: 600px;
+			margin: 50px auto;
+			padding: 20px;
+			background-color: #fff;
+			border-radius: 10px;
+            box-shadow: 0 5px 25px 0 rgba(214, 215, 216, 0.6);
+		}
+
+		h1 {
+			font-size: 24px;
+			font-weight: bold;
+			margin-bottom: 20px;
+		}
+
+		p {
+			font-size: 16px;
+			line-height: 1.5;
+			margin-bottom: 20px;
+		}
+
+		a {
+			display: inline-block;
+			padding: 10px 20px;
+			background-color: #5ea2c4;
+			color: #fff;
+			text-decoration: none;
+			border-radius: 5px;
+			transition: background-color 0.3s;
+		}
+
+		a:hover {
+			background-color: #5ea2c4;
+		}
+        .btn {
+			background-color: #cee6f3;
+			color: black;
+            border: 2px solid #68A4C4;
+			padding: 10px 20px;
+			text-align: center;
+			text-decoration: none;
+			display: inline-block;
+			font-size: 16px;
+			border-radius: 50px;
+			cursor: pointer;
+            transition: background-color 0.3s ease;
+		}
+
+		.btn:hover {
+			background-color: #abcfe0;
+		}
+
+        #talbiyahAudio{
+            display: none;
+        }
+		.reset-button{
+			margin-left: 10px;
+		}
+		#tawaf_buttons{
+			display: flex;
+			justify-content: center;
+			margin-top: 20px;
+		}
+
+		#videoContainer, #videoContainerNamaz, #videoContainerZamzam{
+			margin-top: 30px;
+		}
+
+		video{
+			width: -webkit-fill-available;
+		}
+
+		@media screen and (max-width:800px){
+			.btn{
+				width: 100%;
+				height: 50px;
+				margin-top: 10px;
+			}
+		}
+
+		.popup {
+      position: absolute;
+      display: none;
+      background-color: #fff;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+      padding: 16px;
+      animation: fadeIn 0.3s ease-out;
+    }
+
+    @keyframes fadeIn {
+      0% { opacity: 0; transform: translateY(-10px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+
+    .popup .title {
+      font-size: 18px;
+      font-weight: bold;
+      margin-bottom: 8px;
+    }
+
+    .popup .content {
+      font-size: 14px;
+    }
+
+    .popup .image {
+      max-width: 200px;
+      height: auto;
+      margin-top: 8px;
+    }
+	</style>
+</head>
+<body>
+    <div class="container">
+        <h1>Rituals of Umrah:</h1>
+    </div>
+	<div class="container">
+		<h1 class="title">1: Intention (Niyah) of tawaf</h1>
+		<p class="description">اللهم إني أُريد أن أعمل العمرة فَيَسِّرْهَا لي وتَقَبَّلْهَا مِنِّي</p>
+        <p class="description">O Allah, I intend to perform tawaf, so make it easy for me and accept it from me.</p>
+        
+    </div>
+    <div class="container">
+		<h1 class="title">2: Istelam</h1>
+<p class="description">Istelam is an important step during Tawaf al-Umrah. It refers to the act of touching or kissing the Black Stone (Hajar al-Aswad) at the beginning and end of each circuit around the Kaaba. Performing Istelam is a symbolic gesture of seeking blessings and closeness to Allah.</p>
+<button id="videoButton" class="btn" style="margin-top:10px">Play Istelam Video</button>
+<div id="videoContainer"></div>
+
+<script>
+  var button = document.getElementById("videoButton");
+  button.addEventListener("click", function() {
+    var videoPath = "assets/video/istelam.mp4";
+    var videoContainer = document.getElementById("videoContainer");
+    videoContainer.innerHTML = `
+      <video src="${videoPath}" controls autoplay></video>
+    `;
+  });
+</script>
+
+</div>
+<div class="container">
+		<h1 class="title">3: Move Anticlockwise and Complete 7 circles.</h1>
+		<p class="description">Tawaf is a fundamental ritual of the pilgrimage of Umrah, starting with Istelam (a gesture of reverence) towards the Black Stone (Hajr al-Aswad). Pilgrims then move in an anti-clockwise direction around the Kaaba, completing the first circle. They continue to repeat the process of Istelam and circling the Kaaba for a total of seven circles. Tawaf signifies the unity of the Muslim community and the spiritual connection with Allah, as pilgrims engage in this sacred act of devotion.</p>
+		<button id="start_tawaf_button" class="btn" style="margin-top:10px">Show Tawaf Animation</button>
+		<div style = "text-align: center; margin-top: 30px; max-width: 100%;" id="tawaf_canvas"></div>
+		<div id="tawaf_buttons"></div>
+
+		<script>
+			var button = document.getElementById("start_tawaf_button");
+			button.addEventListener("click", function() {
+			  loadTawafSketch();
+			});
+
+			const screenWidth = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
+
+		  
+			function loadTawafSketch() {
+    tawafSketch = new p5(function(tawafSketch) {
+      // Tawaf sketch code here
+      // tawaf.js
+    let angle = 10;
+    let rotationSpeed = -0.02;
+    let rotating = false;
+    let rotateButton;
+    let resetButton;
+  
+    tawafSketch.setup = function() {
+
+		document.getElementById('start_tawaf_button').disabled = true;
+
+      // let canvas;
+      // canvas = tawafSketch.createCanvas(400, 400);
+      // canvas.parent('tawaf_canvas');
+
+      let canvas;
+      // Adjust canvas size based on screen width
+      const canvasSize = Math.min(screenWidth, 300); // Set the maximum canvas size to 80% of the screen width or 300px, whichever is smaller
+      canvas = tawafSketch.createCanvas(canvasSize, canvasSize);
+      canvas.parent('tawaf_canvas');
+      console.log(canvasSize);
+      console.log(screenWidth);
+  
+      rotateButton = tawafSketch.createButton('Start Tawaf');
+      rotateButton.class('rotate-button btn');
+      rotateButton.mousePressed(startRotation);
+  
+      resetButton = tawafSketch.createButton('Reset');
+      resetButton.class('reset-button btn');
+      resetButton.mousePressed(resetCharacter);
+  
+      // Get the tawaf_canvas div element
+      const tawafCanvas = document.getElementById('tawaf_buttons');
+  
+      // Append the buttons to the tawaf_canvas div
+      tawafCanvas.appendChild(rotateButton.elt);
+      tawafCanvas.appendChild(resetButton.elt);
+    };
+  
+    tawafSketch.draw = function() {
+
+      tawafSketch.background(220);
+      tawafSketch.noStroke();
+  
+      // Draw the Kaaba
+      tawafSketch.fill(0);
+      tawafSketch.rectMode(tawafSketch.CENTER);
+      tawafSketch.rect(tawafSketch.width / 2, tawafSketch.height / 2, 75, 75);
+  
+      // Calculate the position of the character
+      let radius = 125;
+      let x = tawafSketch.width / 2 + radius * tawafSketch.cos(angle + tawafSketch.PI - 2.8);
+      let y = tawafSketch.height / 2 + radius * tawafSketch.sin(angle + tawafSketch.PI + 1 / 4);
+  
+      // Draw the character
+      tawafSketch.fill(255);
+      tawafSketch.ellipse(x, y, 20, 20);
+  
+      // Draw the fixed white circle at the bottom left corner
+      let rectWidth = 75;
+      let rectHeight = 75;
+      let circleSize = 10;
+      let circleX = tawafSketch.width / 2 - rectWidth / 2;
+      let circleY = tawafSketch.height / 2 + rectHeight / 2;
+  
+      tawafSketch.fill(255);
+      tawafSketch.noStroke();
+      tawafSketch.ellipse(circleX, circleY, circleSize, circleSize);
+  
+      // Draw the square representing Maqam Ibrahim
+      let maqamSize = 15;
+      let maqamX = tawafSketch.width / 1.81;
+      let maqamY = tawafSketch.height / 2 + rectHeight / 2 + maqamSize + 10;
+  
+      tawafSketch.fill(255, 215, 0); // RGB values for gold
+      tawafSketch.stroke(0);
+      tawafSketch.strokeWeight(2);
+      tawafSketch.rectMode(tawafSketch.CENTER);
+      let cornerRadius = 5; // Adjust the corner radius as needed
+      tawafSketch.rect(maqamX, maqamY, maqamSize, maqamSize, cornerRadius);
+  
+      // Calculate the diameter of the semicircle
+      let semicircleDiameter = rectWidth;
+  
+      // Calculate the position of the semicircle
+      let semicircleX = tawafSketch.width / 2 + 37.5;
+      let semicircleY = tawafSketch.height / 2;
+  
+      // Set the stroke and no fill
+      tawafSketch.noFill();
+      tawafSketch.stroke(255); // Gray color, you can adjust the value as needed
+  
+      // Draw the outlined semicircle
+      tawafSketch.arc(semicircleX, semicircleY, semicircleDiameter, semicircleDiameter, 3 * tawafSketch.PI / 2, tawafSketch.PI / 2);
+  
+      // Draw green lights of Hajr al-Aswad indication
+      tawafSketch.fill(0, 255, 0);
+      tawafSketch.stroke(100, 200, 100);
+      tawafSketch.ellipse(0, 300, 75, 75);
+  
+      if (rotating) {
+        angle -= rotationSpeed;
+        rotateButton.html('Stop Tawaf');
+      } else {
+        rotateButton.html('Start Tawaf');
+      }
+    };
+  
+    function startRotation() {
+      rotating = !rotating; // Toggle the rotating variable
+    }
+  
+    function resetCharacter() {
+      angle = 10;
+      rotating = false;
+      rotateButton.html('Start Tawaf');
+    }
+  });
+    };
+
+		  </script>
+
+    </div>
+    <div class="container">
+		<h1 class="title">4: Prayer behind Maqam-e-Ibrahim</h1>
+<p class="description">During Tawaf, it is customary for pilgrims to offer two Rakat of Wajib prayer behind Maqam Ibrahim. However, if space is not available behind Maqam Ibrahim, pilgrims are permitted to perform this prayer anywhere within Masjid al-Haram. This flexibility ensures that individuals can fulfill the obligatory prayer with devotion and sincerity, even if they are unable to find a spot directly behind Maqam Ibrahim.</p>
+<button id="videoButtonNamaz" class="btn" style="margin-top:10px">3D Animamtion</button>
+<div id="videoContainerNamaz"></div>
+
+<script>
+  var button = document.getElementById("videoButtonNamaz");
+  button.addEventListener("click", function() {
+    var videoPath = "assets/video/maqam_ibrahim_namaz.mp4";
+    var videoContainer = document.getElementById("videoContainerNamaz");
+    videoContainer.innerHTML = `
+      <video src="${videoPath}" controls autoplay></video>
+    `;
+  });
+</script>
+
+</div>
+
+<div class="container">
+	<h1 class="title">5: Drink Zamzam Water</h1>
+<p class="description">Drinking Zamzam water after Tawaf is a blessed tradition that replenishes and spiritually uplifts pilgrims in Masjid al-Haram.</p>
+<button id="videoButtonZamzam" class="btn" style="margin-top:10px">3D Animamtion</button>
+<div id="videoContainerZamzam"></div>
+
+<script>
+var button = document.getElementById("videoButtonZamzam");
+button.addEventListener("click", function() {
+var videoPath = "assets/video/zamzam_after_tawaf.mp4";
+var videoContainer = document.getElementById("videoContainerZamzam");
+videoContainer.innerHTML = `
+  <video src="${videoPath}" controls autoplay></video>
+`;
+});
+</script>
+
+</div>
+
+<!-- <div class="container">
+	<form method="post">
+		<input type="submit" name="submit_button" value="Proceed to Step 5 (Umrah Checklist)">
+	</form>
+</div> -->
+
+<div id="chatbot-icon" onclick="toggleChatbox()">&#128172;</div>
+    <div id="chatbot-container">
+        <div id="chatbot-header">Chatbot</div>
+        <div id="chatbot-messages"></div>
+        <input type="text" id="chatbot-input" placeholder="Type your message...">
+        <button id="send-btn">Send</button>
+    </div>
+
+</body>
+
+<script src="assets/js/chatbot.js"></script>
+
+<style>
+	input[type="submit"] {
+		background-color: #333;
+		color: #fff;
+		border: none;
+		padding: 10px 20px;
+		font-size: 16px;
+		cursor: pointer;
+		transition: background-color 0.3s;
+	}
+	input[type="submit"]:hover {
+		background-color: #555;
+	}
+</style>
+
+</html>
