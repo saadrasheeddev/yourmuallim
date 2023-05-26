@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js"></script>
+    <link rel="stylesheet" href="assets/css/chatbot.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+
+
+	<title>Umrah Application</title>
+	<style>
+		body {
+			font-family: Arial, sans-serif;
+			margin: 0;
+			padding: 0;
+		}
+
+		.container {
+			max-width: 600px;
+			margin: 50px auto;
+			padding: 20px;
+			background-color: #fff;
+			border-radius: 10px;
+            box-shadow: 0 5px 25px 0 rgba(214, 215, 216, 0.6);
+		}
+
+		h1 {
+			font-size: 24px;
+			font-weight: bold;
+			margin-bottom: 20px;
+		}
+
+		p {
+			font-size: 16px;
+			line-height: 1.5;
+			margin-bottom: 20px;
+		}
+
+		a {
+			display: inline-block;
+			padding: 10px 20px;
+			background-color: #5ea2c4;
+			color: #fff;
+			text-decoration: none;
+			border-radius: 5px;
+			transition: background-color 0.3s;
+		}
+
+		a:hover {
+			background-color: #5ea2c4;
+		}
+        .btn {
+			background-color: #cee6f3;
+			color: black;
+            border: 2px solid #68A4C4;
+			padding: 10px 20px;
+			text-align: center;
+			text-decoration: none;
+			display: inline-block;
+			font-size: 16px;
+			border-radius: 50px;
+			cursor: pointer;
+            transition: background-color 0.3s ease;
+		}
+
+		.btn:hover {
+			background-color: #abcfe0;
+		}
+
+        #talbiyahAudio{
+            display: none;
+        }
+
+		.reset-button{
+			margin-left: 10px;
+		}
+		#tawaf_buttons{
+			display: flex;
+			justify-content: center;
+			margin-top: 20px;
+		}
+
+		@media screen and (max-width:800px){
+			.btn{
+				width: 100%;
+				height: 50px;
+				margin-top: 10px;
+			}
+		}
+
+		.popup {
+      position: absolute;
+      display: none;
+      background-color: #fff;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+      padding: 16px;
+      animation: fadeIn 0.3s ease-out;
+    }
+
+    @keyframes fadeIn {
+      0% { opacity: 0; transform: translateY(-10px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+
+    .popup .title {
+      font-size: 18px;
+      font-weight: bold;
+      margin-bottom: 8px;
+    }
+
+    .popup .content {
+      font-size: 14px;
+    }
+
+    .popup .image {
+      max-width: 200px;
+      height: auto;
+      margin-top: 8px;
+    }
+	</style>
+</head>
+<body>
+    <div class="container">
+        <h1>Rituals of Umrah:</h1>
+    </div>
+	<div class="container">
+		<h1 class="title">1: Intention (Niyah) at Miqat</h1>
+		<p class="description">اللهم إني أُريد أن أعمل العمرة فَيَسِّرْهَا لي وتَقَبَّلْهَا مِنِّي</p>
+        <p class="description">O Allah, I intend to perform Umrah, so make it easy for me and accept it from me.</p>
+		<audio controls id="talbiyahAudio">
+            <source src="assets/audio/talbiyah.mp3" type="audio/mpeg">
+            Your browser does not support the audio element.
+        </audio>
+        <button class="btn" onclick="playTalbiyah()">Say Talbiyah!</button>
+        <button class="btn" onclick="pauseTalbiyah()">Pause</button>
+        <button class="btn" onclick="resumeTalbiyah()">Resume</button>
+		<button id="start_intention_button" class="btn">Show Animation</button>
+		<div style = "text-align: center; margin-top: 30px;" id="intent_canvas">
+		</div>
+        <script>
+            var audio = document.getElementById("talbiyahAudio");
+    
+            function playTalbiyah() {
+                audio.currentTime = 0;
+                audio.play();
+            }
+    
+            function pauseTalbiyah() {
+                audio.pause();
+            }
+    
+            function resumeTalbiyah() {
+                if (audio.currentTime > 0) {
+                    audio.play();
+                }
+            }
+        </script>
+    </div>
+    <div class="container">
+		<h1 class="title">2: Tawaf-ul-Umrah</h1>
+		<p class="description">Tawaf al-Umrah is an essential ritual of performing Umrah. It involves circumambulating the Kaaba in a specific manner. The steps to perform Tawaf al-Umrah are as follows:</p>
+        <button id="tawaf_steps" class="btn" style="margin-top:10px">Steps to Perform Tawaf</button>
+
+        <script>
+            var button = document.getElementById("tawaf_steps");
+            button.addEventListener("click", function() {
+            window.location.href = "tawaf_steps.html";
+            });
+        </script>
+
+		<button id="start_tawaf_button" class="btn" style="margin-top:10px">Show Tawaf Animation</button>
+		<div style = "text-align: center; margin-top: 30px; max-width: 100%;" id="tawaf_canvas"></div>
+		<div id="tawaf_buttons"></div>
+
+</div>
+<div class="container">
+		<h1 class="title">3: Sa'i between Safa and Marwa</h1>
+		<p class="description">During the Sai ritual, pilgrims walk between the hills of Safa and Marwa seven times. They begin by walking from Safa to Marwa for the first round, then return from Marwa to Safa for the second round. This back-and-forth motion is repeated until the seventh round, which concludes at the hill of Marwa. The Sai ritual represents the journey of Hajar (may Allah be pleased with her) as she searched for water and serves as a reminder of faith, determination, and trust in Allah's guidance.</p>
+		<button id="start_sai_button" class="btn">Show Sai Animation</button>
+		<div style = "text-align: center; margin-top: 30px; max-width:100%;" id="sai_canvas"></div>
+    </div>
+    
+	<div class="container">
+		<h1 class="title">4: Halaq / Qasr</h1>
+		<p class="description">Halaq and Qasr are the final rituals of Umrah. Men shave their heads or shorten their hair, while women trim a small portion of their hair. Afterward, pilgrims can remove their Ihram clothing. Alhamdulillah, you have completed your Umrah. May Allah accept it and have mercy on you.</p>
+    </div>
+
+<!-- <div class="container">
+	<form method="post">
+		<input type="submit" name="submit_button" value="Proceed to Step 5 (Umrah Checklist)">
+	</form>
+</div> -->
+
+<div id="chatbot-icon" onclick="toggleChatbox()">&#128172;</div>
+    <div id="chatbot-container">
+        <div id="chatbot-header">Chatbot</div>
+        <div id="chatbot-messages"></div>
+        <input type="text" id="chatbot-input" placeholder="Type your message...">
+        <button id="send-btn">Send</button>
+    </div>
+
+</body>
+
+<script src="assets/js/chatbot.js"></script>
+<script src="assets/js/sketch.js"></script>
+
+
+<style>
+	input[type="submit"] {
+		background-color: #333;
+		color: #fff;
+		border: none;
+		padding: 10px 20px;
+		font-size: 16px;
+		cursor: pointer;
+		transition: background-color 0.3s;
+	}
+	input[type="submit"]:hover {
+		background-color: #555;
+	}
+</style>
+
+</html>
