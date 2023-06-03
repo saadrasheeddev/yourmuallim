@@ -65,12 +65,12 @@
 		}
 
 		a:hover {
-			background-color: #5ea2c4;
+			background-color: #f1de61;
 		}
         .btn {
-			background-color: #cee6f3;
+			background-color: #f1de61;
 			color: black;
-            border: 2px solid #68A4C4;
+            border: 2px solid #f7db28;
 			padding: 10px 20px;
 			text-align: center;
 			text-decoration: none;
@@ -82,7 +82,7 @@
 		}
 
 		.btn:hover {
-			background-color: #abcfe0;
+			background-color: #f4dc39;
 		}
 
         #talbiyahAudio{
@@ -146,8 +146,22 @@
 	</style>
 </head>
 <body>
+
+  <button id="home" class="btn" style="display: block;
+	margin: 20px auto 10px auto;">Home</button>
+
+	<script>
+		var button = document.getElementById("home");
+		button.addEventListener("click", function() {
+		window.location.href = "index.html";
+		});
+	</script>
+
+
+  
+
     <div class="container">
-        <h1>Rituals of Umrah:</h1>
+        <h1>Rituals of Tawaf:</h1>
     </div>
 	<div class="container">
 		<h1 class="title">1: Intention (Niyah) of tawaf</h1>
@@ -367,6 +381,11 @@ videoContainer.innerHTML = `
         <button id="send-btn">Send</button>
     </div>
 
+    <div class="footer-container">
+      <img src="assets/img/coming_soon.png" alt="Coming Soon" class="footer-image">
+    </div>
+    
+
 </body>
 
 <script src="assets/js/chatbot.js"></script>
@@ -384,6 +403,22 @@ videoContainer.innerHTML = `
 	input[type="submit"]:hover {
 		background-color: #555;
 	}
+
+  .footer-container {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  text-align: center;
+}
+
+.footer-image {
+  width: auto;
+  height: 50px;
+  opacity: 0.5;
+}
+  
+
 </style>
 
 </html>

@@ -6,7 +6,6 @@
     <link rel="stylesheet" href="assets/css/chatbot.css">
     <link rel="stylesheet" href="assets/css/style.css">
 
-
 	<title>Umrah Application</title>
 	<style>
 		body {
@@ -15,7 +14,7 @@
 			padding: 0;
 		}
 
-		.container {
+		.container_umrah {
 			max-width: 600px;
 			margin: 50px auto;
 			padding: 20px;
@@ -50,9 +49,9 @@
 			background-color: #5ea2c4;
 		}
         .btn {
-			background-color: #cee6f3;
+			background-color: #f1de61;
 			color: black;
-            border: 2px solid #68A4C4;
+            border: 2px solid #f7db28;
 			padding: 10px 20px;
 			text-align: center;
 			text-decoration: none;
@@ -64,7 +63,7 @@
 		}
 
 		.btn:hover {
-			background-color: #abcfe0;
+			background-color: #f4dc39;
 		}
 
         #talbiyahAudio{
@@ -121,10 +120,21 @@
 	</style>
 </head>
 <body>
-    <div class="container">
+
+	<button id="home" class="btn" style="display: block;
+	margin: 20px auto 10px auto;">Home</button>
+
+	<script>
+		var button = document.getElementById("home");
+		button.addEventListener("click", function() {
+		window.location.href = "index.html";
+		});
+	</script>
+
+    <div class="container_umrah">
         <h1>Rituals of Umrah:</h1>
     </div>
-	<div class="container">
+	<div class="container_umrah">
 		<h1 class="title">1: Intention (Niyah) at Miqat</h1>
 		<p class="description">اللهم إني أُريد أن أعمل العمرة فَيَسِّرْهَا لي وتَقَبَّلْهَا مِنِّي</p>
         <p class="description">O Allah, I intend to perform Umrah, so make it easy for me and accept it from me.</p>
@@ -157,7 +167,7 @@
             }
         </script>
     </div>
-    <div class="container">
+    <div class="container_umrah">
 		<h1 class="title">2: Tawaf-ul-Umrah</h1>
 		<p class="description">Tawaf al-Umrah is an essential ritual of performing Umrah. It involves circumambulating the Kaaba in a specific manner. The steps to perform Tawaf al-Umrah are as follows:</p>
         <button id="tawaf_steps" class="btn" style="margin-top:10px">Steps to Perform Tawaf</button>
@@ -174,14 +184,14 @@
 		<div id="tawaf_buttons"></div>
 
 </div>
-<div class="container">
+<div class="container_umrah">
 		<h1 class="title">3: Sa'i between Safa and Marwa</h1>
 		<p class="description">During the Sai ritual, pilgrims walk between the hills of Safa and Marwa seven times. They begin by walking from Safa to Marwa for the first round, then return from Marwa to Safa for the second round. This back-and-forth motion is repeated until the seventh round, which concludes at the hill of Marwa. The Sai ritual represents the journey of Hajar (may Allah be pleased with her) as she searched for water and serves as a reminder of faith, determination, and trust in Allah's guidance.</p>
 		<button id="start_sai_button" class="btn">Show Sai Animation</button>
 		<div style = "text-align: center; margin-top: 30px; max-width:100%;" id="sai_canvas"></div>
     </div>
     
-	<div class="container">
+	<div class="container_umrah">
 		<h1 class="title">4: Halaq / Qasr</h1>
 		<p class="description">Halaq and Qasr are the final rituals of Umrah. Men shave their heads or shorten their hair, while women trim a small portion of their hair. Afterward, pilgrims can remove their Ihram clothing. Alhamdulillah, you have completed your Umrah. May Allah accept it and have mercy on you.</p>
     </div>
@@ -199,6 +209,11 @@
         <input type="text" id="chatbot-input" placeholder="Type your message...">
         <button id="send-btn">Send</button>
     </div>
+
+
+	<div class="footer-container">
+		<img src="assets/img/coming_soon.png" alt="Coming Soon" class="footer-image">
+	  </div>
 
 </body>
 
@@ -219,6 +234,20 @@
 	input[type="submit"]:hover {
 		background-color: #555;
 	}
+
+	.footer-container {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  text-align: center;
+}
+
+.footer-image {
+  width: auto;
+  height: 50px;
+  opacity: 0.5;
+}
 </style>
 
 </html>
