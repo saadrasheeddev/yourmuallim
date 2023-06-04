@@ -15,7 +15,7 @@ function sendMessage() {
 
     displayMessage(message, 'user');
     
-    response = "Assalam-O-Alaikum! Welcome to the Muallim Website. We have our app under devrlopment phase right now! Stay Tuned :)";
+    response = "Assalam-O-Alaikum! Welcome to the Muallim Website. We have our app under development phase right now! Stay Tuned :)";
 
     // Send the user's message to the chatbot
     if (message.trim() !== '') {
