@@ -1,6 +1,6 @@
 #chatbot-icon {
     position: fixed;
-    bottom: 20px;
+    bottom: 50px;
     right: 20px;
     background-color: #333;
     color: #fff;
@@ -22,7 +22,7 @@
     #chatbot-container {
     display: none;
     position: fixed;
-    bottom: 100px;
+    bottom: 140px;
     right: 20px;
     width: 300px;
     height: 400px;
