@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html>
+<head>
+	
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="assets/css/chatbot.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+
+    <!-- Favicons -->
+	<link href="assets/img/favicon.png" rel="icon">
+
+	<title>Umrah Checklist</title>
+	<style>
+		.container_checklist {
+			max-width: 600px;
+			margin: 0 auto;
+			padding: 20px;
+			box-sizing: border-box;
+			background-color: #fff;
+			border-radius: 10px;
+            box-shadow: 0 5px 25px 0 rgba(214, 215, 216, 0.6);
+			font-family: Arial, sans-serif;
+			opacity: 0;
+			animation: fadeIn 1s forwards;
+            margin-bottom: 50px;
+		}
+
+        a{
+            text-decoration: none;
+            color: white;
+        }
+
+		@keyframes fadeIn {
+			0% {
+				opacity: 0;
+				transform: translateY(20px);
+			}
+			100% {
+				opacity: 1;
+				transform: translateY(0);
+			}
+		}
+
+		.checklist {
+			list-style: none;
+			padding: 0;
+		}
+
+		.checklist li {
+			display: flex;
+			align-items: center;
+			margin-bottom: 10px;
+			opacity: 0;
+			animation: fadeIn 1s forwards;
+			animation-delay: 0.3s;
+		}
+
+		.checklist li label {
+			flex: 1;
+			margin-right: 10px;
+			font-weight: bold;
+			font-size: 16px;
+			color: #000;
+		}
+
+		.checklist li input[type="checkbox"] {
+			margin-right: 10px;
+		}
+
+		.progress {
+			background-color: #fff;
+			height: 20px;
+			border-radius: 10px;
+			overflow: hidden;
+			box-shadow: inset 0 5px 25px 0 rgba(214, 215, 216, 0.6);
+			margin-bottom: 20px;
+			opacity: 0;
+			animation: fadeIn 1s forwards;
+			animation-delay: 0.6s;
+		}
+
+		.progress-bar {
+			height: 100%;
+			background-color: #7e6d04;
+			width: 0%;
+			transition: width 0.5s ease-in-out;
+		}
+
+		.completed .progress-bar {
+			width: 100%;
+		}
+
+		.completed li input[type="checkbox"] {
+			opacity: 0.5;
+			cursor: default;
+		}
+
+		.btn {
+			background-color: #968200;
+			color: #ffffff;
+            border: 2px solid #aa9c3d;
+			padding: 10px 20px;
+			text-align: center;
+			text-decoration: none;
+			display: inline-block;
+			font-size: 16px;
+			border-radius: 5px;
+			cursor: pointer;
+            transition: background-color 0.3s ease;
+		}
+
+		.btn:hover {
+			background-color: #b39d0c;
+		}
+
+		@media screen and (max-width: 800px) {
+			.container_checklist {
+				width: 100%;
+			}
+
+			.btn {
+				width: 100%;
+				height: 50px;
+				margin-top: 10px;
+			}
+		}
+
+        @media screen and (max-width:400px){
+			.footer-image{
+				width:100%;
+				height: auto;
+			}
+		}
+	</style>
+</head>
+<body>
+
+    <button id="home" class="btn" style="display: block;
+	margin: 20px auto 10px auto;">Home</button>
+
+	<script>
+		var button = document.getElementById("home");
+		button.addEventListener("click", function() {
+		window.location.href = "index.html";
+		});
+	</script>
+
+	<div class="container_checklist">
+		<h1>Umrah Checklist</h1>
+		<ul class="checklist">
+			<li class="completed">
+				<label for="passport">Passport</label>
+				<input type="checkbox" id="passport">
+			</li>
+			<li class="completed">
+				<label for="visa">Visa</label>
+				<input type="checkbox" id="visa">
+			</li>
+			<li>
+				<label for="ticket">Ticket</label>
+				<input type="checkbox" id="ticket">
+			</li>
+			<li>
+				<label for="ihram">Ihram</label>
+				<input type="checkbox" id="ihram">
+			</li>
+			<li>
+				<label for="cash">Cash</label>
+				<input type="checkbox" id="cash">
+			</li>
+			<li>
+				<label for="scissors">Scissors</label>
+				<input type="checkbox" id="scissors">
+			</li>
+			<li>
+				<label for="toiletries">Toiletries</label>
+                <input type="checkbox" id="toiletries">
+			</li>
+			<li>
+				<label for="prayer_mat">Prayer mat</label>
+                <input type="checkbox" id="prayer_mat">
+			</li>
+			<li>
+				<label for="money_belt">Money belt</label>
+                <input type="checkbox" id="money_belt">
+			</li>
+			<li>
+				<label for="footwear">Footwear for Umrah</label>
+                <input type="checkbox" id="footwear">
+			</li>
+			<li>
+				<label for="water_bottle">Water bottle</label>
+                <input type="checkbox" id="water_bottle">
+			</li>
+			<li>
+				<label for="medications">Medications</label>
+                <input type="checkbox" id="medications">
+			</li>
+			<li>
+				<label for="sunscreen">Sunscreen</label>
+                <input type="checkbox" id="sunscreen">
+			</li>
+			<li>
+				<label for="tasbih">Tasbih</label>
+                <input type="checkbox" id="tasbih">
+			</li>
+			<li>
+				<label for="quran">Quran</label>
+                <input type="checkbox" id="quran">
+			</li>
+			<li>
+				<label for="umbrella">Umbrella</label>
+                <input type="checkbox" id="umbrella">
+			</li>
+			<li>
+				<label for="clothes">Clothes</label>
+                <input type="checkbox" id="clothes">
+			</li>
+			<li>
+				<label for="tissues">Tissues</label>
+                <input type="checkbox" id="tissues">
+			</li>
+			<li>
+				<label for="snacks">Snacks</label>
+                <input type="checkbox" id="snacks">
+			</li>
+			<li>
+				<label for="documents">Documents</label>
+                <input type="checkbox" id="documents">
+			</li>
+            </ul>
+            <div class="progress">
+                <div class="progress-bar" id="progress-bar"></div>
+            </div>
+			<form id="form">
+            	<button class="btn" id="reset-btn">Reset Checklist</button>
+				<button id="proceed" class="btn"><a href="umrah.html">Proceed</a></button>
+			</form>
+        </div>
+
+        <script>
+			const resetBtn = document.getElementById('reset-btn');
+
+			// Add a click event listener to the reset button
+			resetBtn.addEventListener('click', function(event) {
+				// Prevent the default form submission behavior
+				event.preventDefault();
+			});
+
+            // Get all checkboxes and progress bar
+            const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+            const progressBar = document.getElementById('progress-bar');
+        
+            // Set initial progress bar width based on checked checkboxes
+            const checkedCount = document.querySelectorAll('input[type="checkbox"]:checked').length;
+            const totalCount = checkboxes.length;
+            const initialWidth = checkedCount / totalCount * 100;
+            progressBar.style.width = initialWidth + '%';
+        
+            // Update progress bar whenever a checkbox is checked or unchecked
+            checkboxes.forEach(checkbox => {
+                checkbox.addEventListener('change', () => {
+                    const checkedCount = document.querySelectorAll('input[type="checkbox"]:checked').length;
+                    const newWidth = checkedCount / totalCount * 100;
+                    progressBar.style.width = newWidth + '%';
+                });
+            });
+        
+            // Reset checklist and progress bar when reset button is clicked
+            const resetButton = document.getElementById('reset-btn');
+            resetButton.addEventListener('click', () => {
+                checkboxes.forEach(checkbox => {
+                    checkbox.checked = false;
+                    checkbox.parentNode.classList.remove('completed');
+                    progressBar.style.width = '0%';
+                });
+            });
+        </script>
+
+<div id="chatbot-icon" onclick="toggleChatbox()">&#128172;</div>
+<div id="chatbot-container">
+    <div id="chatbot-header">Chatbot</div>
+    <div id="chatbot-messages"></div>
+    <input type="text" id="chatbot-input" placeholder="Type your message...">
+    <button id="send-btn">Send</button>
+</div>
+
+
+<div class="footer-container">
+    <img src="assets/img/coming_soon.png" alt="Coming Soon" class="footer-image">
+  </div>
+
+</body>
+
+<script src="assets/js/chatbot.js"></script>
+<style>
+    .footer-container {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  text-align: center;
+}
+
+.footer-image {
+  width: auto;
+  height: 50px;
+  opacity: 0.5;
+}
+</style>
+
+</html>
