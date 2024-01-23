@@ -20,7 +20,7 @@ const fetchAyah = (req, res) => {
       const ayahDb = JSON.parse(data);
 
       // Send the JSON data as the response
-      res.json({ ayah_db: ayahDb });
+      res.json(ayahDb);
     } catch (parseError) {
       // Handle JSON parsing error
       console.error('Error parsing ayah_db.json:', parseError);
